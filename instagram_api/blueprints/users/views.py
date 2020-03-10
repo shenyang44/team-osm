@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify, request, render_template, redirect
+from flask import Blueprint, jsonify, request, render_template, redirect, json
 from models.user import User
-
+from werkzeug.security import generate_password_hash, check_password_hash
 
 users_api_blueprint = Blueprint('users_api',
                                 __name__,
@@ -19,5 +19,11 @@ def index():
 
 @users_api_blueprint.route('/create', methods=['POST'])
 def create():
-    resp = request.get('http://localhost: 5000/api/v1/users/create')
-    return render_template('new.html', response=resp.json)
+    resp = request.get_json()
+    name = resp.get('name')
+    password = resp.get('password')
+    email = resp.get('email')
+    number = resp.get('number')
+    hashed_pa = generate_password_hash(password)
+    user = User(name=name, password=hashed_pa)
+    return
