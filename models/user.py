@@ -7,6 +7,7 @@ class User(BaseModel):
     password = pw.CharField(unique=False)
     email = pw.CharField(unique=True)
     address = pw.TextField(unique=False, null=True)
+    number = pw.IntegerField(unique=True)
     blood_group = pw.CharField(unique=False, null=True)
 
     def validate(self):
@@ -16,4 +17,8 @@ class User(BaseModel):
 
         if self.blood_group not in ['A pos.', 'B pos.', 'O pos.', 'AB pos.', 'A neg.', 'B neg.', 'O neg.', 'AB neg.']:
             self.errors.append(
-                'Blood group only accepts this format (A neg. | O pos.)')
+                'Blood group only accepts this format (A neg. | O pos.)') m
+
+        number_taken = User.get_or_none(User.number == self.number)
+        if number_taken:
+            self.errors.append('Number taken, yo')
