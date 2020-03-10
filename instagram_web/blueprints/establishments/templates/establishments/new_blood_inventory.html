@@ -1,0 +1,31 @@
+{% extends '_layout.html' %}
+{% block content %}
+
+<h1>Blood Inventory</h1>
+
+<form action="{{ url_for('establishments.create_blood_inventory') }}" method="post">
+
+    <div class="form-group">
+        <label>Blood Type:</label>
+        <input type='text' name='blood_type' class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Quantity:</label>
+        <input type='text' name='quantity' class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <select name="establishment_id" class="form-control">
+            <option selected><em>Select Establishment</em></option>
+            {% for establishment in establishments %}
+            <option value="{{establishment.id}}">{{establishment.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+/
+<a href="{{ url_for('home') }}">Home</a>
+{% endblock %}

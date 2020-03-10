@@ -3,7 +3,7 @@
 
 <h1>Register Establishment</h1>
 
-<form action="{{ url_for('establishments.create') }}" method="post">
+<form action="{{ url_for('establishments.create_establishment') }}" method="post">
     <div class="form-group">
         <label>Name:</label>
         <input type='text' name='name' class="form-control" />
@@ -16,4 +16,6 @@
 
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+/
+<a href="{{ url_for('home') }}">Home</a>
 {% endblock %}
