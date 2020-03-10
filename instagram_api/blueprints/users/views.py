@@ -25,5 +25,10 @@ def create():
     email = resp.get('email')
     number = resp.get('number')
     hashed_pa = generate_password_hash(password)
-    user = User(name=name, password=hashed_pa)
+    user = User(name=name, password=hashed_pa, email=email, number=number)
+    if user.save():
+        return jsonify({
+            "message": 'fudge you, it worked'
+        })
+    else:
     return
