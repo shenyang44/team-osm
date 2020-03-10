@@ -9,7 +9,7 @@ web_dir = os.path.join(os.path.dirname(
 
 app = Flask('NEXTAGRAM', root_path=web_dir)
 
-app.config['JWT_SECRET_KEY'] = 'super-secret'
+app.config['JWT_SECRET_KEY'] = 'ZmxhbWluZ28'
 jwt = JWTManager(app)
 
 
