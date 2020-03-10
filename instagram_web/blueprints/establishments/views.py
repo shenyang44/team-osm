@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, url_for, redirect
 from models.establishment import Establishment
 
 establishments_blueprint = Blueprint('establishments',
@@ -8,7 +8,7 @@ establishments_blueprint = Blueprint('establishments',
 
 @establishments_blueprint.route('/new', methods=['GET'])
 def new():
-    return render_template('establishment/new.html')
+    return render_template('establishments/new.html')
 
 
 @establishments_blueprint.route('/', methods=['POST'])
@@ -21,8 +21,8 @@ def create():
     try:
         establishment.save()
         # flash('Establishment registered successfully', 'success')
-        return redirect(url_for('establishment.new'))
+        return redirect(url_for('establishments.new'))
 
     except:
         # flash('Error creating Establishment', 'danger')
-        return redirect(url_for('establishment.new'))
+        return redirect(url_for('establishments.new'))
