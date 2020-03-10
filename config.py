@@ -8,7 +8,8 @@ class Config(object):
     SECRET_KEY = os.environ.get(
         'SECRET_KEY') or os.urandom(32)
 
-JWT_SECRET_KEY = 
+# JWT_SECRET_KEY =
+
 
 class ProductionConfig(Config):
     DEBUG = False
@@ -25,6 +26,7 @@ class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
     ASSETS_DEBUG = False
+
 
 class TestingConfig(Config):
     TESTING = True

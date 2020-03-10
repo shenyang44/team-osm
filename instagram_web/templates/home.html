@@ -9,5 +9,9 @@ Homepage
 
 {% block content %}
 <h1>Homepage</h1>
-<a href="{{ url_for('establishments.new') }}">Establishment</a>
+<a href="{{ url_for('establishments.new_establishment') }}">Establishment</a>
+/
+<a href="{{ url_for('establishments.new_events') }}">Event</a>
+/
+<a href="{{ url_for('establishments.new_blood_inventory') }}">Blood Inventory</a>
 {% endblock %}
