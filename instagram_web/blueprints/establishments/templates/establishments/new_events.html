@@ -4,6 +4,7 @@
 <h1>Register Event</h1>
 
 <form action="{{ url_for('establishments.create_events') }}" method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
 
     <div class="form-group">
         <label>Location:</label>

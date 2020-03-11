@@ -8,10 +8,15 @@ Homepage
 {% endblock %}
 
 {% block content %}
-<h1>Homepage</h1>
-<a href="{{ url_for('establishments.new_establishment') }}">Establishment</a>
-/
-<a href="{{ url_for('establishments.new_events') }}">Event</a>
-/
-<a href="{{ url_for('establishments.new_blood_inventory') }}">Blood Inventory</a>
+{% if not current_user.is_authenticated %}
+
+<h1>Welcome </h1>
+
+{% endif %}
+
+{% if current_user.is_authenticated %}
+<br>
+<h1>Welcome back, {{current_user.username}}</h1>
+
+{% endif %}
 {% endblock %}

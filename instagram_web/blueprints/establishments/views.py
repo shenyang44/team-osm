@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, url_for, redirect
+from flask import Blueprint, render_template, request, url_for, redirect, flash
 from models.establishment import Establishment
 from models.events import Events
 from models.blood_invetory import Blood_Inventory
@@ -23,11 +23,11 @@ def create_establishment():
 
     try:
         establishment.save()
-        # flash('Establishment registered successfully', 'success')
+        flash('Establishment registered successfully', 'success')
         return redirect(url_for('home'))
 
     except:
-        # flash('Error creating Establishment', 'danger')
+        flash('Error creating Establishment', 'danger')
         return redirect(url_for('establishments.new_establishment'))
 
 
@@ -51,11 +51,11 @@ def create_events():
 
     try:
         events.save()
-        # flash('Establishment registered successfully', 'success')
+        flash('Establishment registered successfully', 'success')
         return redirect(url_for('home'))
 
     except:
-        # flash('Error creating Establishment', 'danger')
+        flash('Error creating Establishment', 'danger')
         return redirect(url_for('establishments.new_events'))
 
 
@@ -76,9 +76,9 @@ def create_blood_inventory():
 
     try:
         blood_inventory.save()
-        # flash('Establishment registered successfully', 'success')
+        flash('Establishment registered successfully', 'success')
         return redirect(url_for('home'))
 
     except:
-        # flash('Error creating Establishment', 'danger')
+        flash('Error creating Establishment', 'danger')
         return redirect(url_for('establishments.new_blood_inventory'))
