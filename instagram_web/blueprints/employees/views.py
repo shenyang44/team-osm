@@ -3,6 +3,8 @@ from models.employee import Employee
 from models.events import Events
 from models.establishment import Establishment
 from flask_login import LoginManager, current_user, login_user, login_required, logout_user
+from werkzeug.security import generate_password_hash
+
 
 employees_blueprint = Blueprint('employees',
                                 __name__,
@@ -18,16 +20,29 @@ def new():
 def create():
 
     email = request.form.get('email')
-    username = request.form.get('username')
-    password = request.form.get('password')
+    email_taken = Employee.get_or_none(Employee.email == email)
+    if email_taken:
+        flash('Email already taken.', 'danger')
+        return redirect(url_for('employees.new'))
 
-    signup = Employee(email=email, username=username, password=password)
+    username = request.form.get('username')
+    username_taken = Employee.get_or_none(
+        Employee.username == username)
+    if username_taken:
+        flash('Username already taken', 'danger')
+        return redirect(url_for('employees.new'))
+
+    password = request.form.get('password')
+    hashed_password = generate_password_hash(password)
+
+    signup = Employee(email=email, username=username, password=hashed_password)
+
     try:
         signup.save()
+        flash('Employee successfully signed up', 'success')
         employee = Employee.get_or_none(Employee.username == username)
         login_user(employee)
-        flash('Employee successfully signed up', 'success')
-        return redirect(url_for('employees.show_feed'))
+        return redirect(url_for('employees.show_mainpage'))
 
     except:
         flash('Error creating Employee', 'danger')
