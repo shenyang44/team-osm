@@ -3,7 +3,7 @@ import config
 from flask import Flask
 from models.base_model import db
 from flask_jwt_extended import JWTManager
-from flask_wtf.csrf import CSRFProtect
+# from flask_wtf.csrf import CSRFProtect
 
 web_dir = os.path.join(os.path.dirname(
     os.path.abspath(__file__)), 'instagram_web')
@@ -13,7 +13,7 @@ app = Flask('NEXTAGRAM', root_path=web_dir)
 app.config['JWT_SECRET_KEY'] = 'ZmxhbWluZ28'
 jwt = JWTManager(app)
 
-csrf = CSRFProtect(app)
+# csrf = CSRFProtect(app)
 
 
 if os.getenv('FLASK_ENV') == 'production':
