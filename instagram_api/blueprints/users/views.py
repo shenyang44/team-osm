@@ -41,7 +41,7 @@ def create():
         })
     else:
         return jsonify({
-            'message': 'no'
+            'message': user.errors
         })
 
 
