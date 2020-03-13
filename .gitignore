@@ -2,5 +2,5 @@
 *.DS_Store
 *__pycache__
 *.env
-team-osm_web/static/.webassets-cache
-team-osm_web/static/gen
+team_osm_web/static/.webassets-cache
+team_osm_web/static/gen
