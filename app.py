@@ -6,7 +6,7 @@ from flask_jwt_extended import JWTManager
 # from flask_wtf.csrf import CSRFProtect
 
 web_dir = os.path.join(os.path.dirname(
-    os.path.abspath(__file__)), 'instagram_web')
+    os.path.abspath(__file__)), 'team_osm_web')
 
 app = Flask('NEXTAGRAM', root_path=web_dir)
 

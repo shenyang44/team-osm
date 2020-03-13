@@ -18,8 +18,10 @@ def new_establishment():
 def create_establishment():
     name = request.form.get('name')
     address = request.form.get('address')
+    hospital_type = request.form.get('hospital_type')
 
-    establishment = Establishment(name=name, address=address)
+    establishment = Establishment(
+        name=name, address=address, hospital_type=hospital_type)
 
     try:
         establishment.save()
