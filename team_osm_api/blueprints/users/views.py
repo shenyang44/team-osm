@@ -20,7 +20,7 @@ def index():
     return jsonify(user_list)
 
 
-@users_api_blueprint.route('/create', methods=['POST'])
+@users_api_blueprint.route('/sign-up', methods=['POST'])
 def create():
     resp = request.get_json()
     name = resp.get('name')
@@ -31,6 +31,7 @@ def create():
     hashed_pa = generate_password_hash(password)
     user = User(name=name, password=hashed_pa,
                 email=email, number=number, address=address)
+
     if user.save():
         user = User.get_or_none(User.email == email)
         access_token = create_access_token(identity=user.id)
@@ -40,7 +41,7 @@ def create():
         })
     else:
         return jsonify({
-            'message': 'no'
+            'message': user.errors
         })
 
 
