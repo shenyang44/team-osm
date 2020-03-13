@@ -15,9 +15,9 @@ class User(BaseModel):
         if email_taken:
             self.errors.append('That email is taken.')
 
-        if self.blood_group not in ['A pos.', 'B pos.', 'O pos.', 'AB pos.', 'A neg.', 'B neg.', 'O neg.', 'AB neg.']:
-            self.errors.append(
-                'Blood group only accepts this format (A neg. | O pos.)')
+        # if self.blood_group not in ['A pos.', 'B pos.', 'O pos.', 'AB pos.', 'A neg.', 'B neg.', 'O neg.', 'AB neg.']:
+        #     self.errors.append(
+        #         'Blood group only accepts this format (A neg. | O pos.)')
 
         number_taken = User.get_or_none(User.number == self.number)
         if number_taken:
