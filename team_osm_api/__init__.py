@@ -1,5 +1,5 @@
-from instagram_api.blueprints.users.views import users_api_blueprint
-from instagram_api.blueprints.establishments.views import establishments_api_blueprint
+from team-osm_api.blueprints.users.views import users_api_blueprint
+from team-osm_api.blueprints.establishments.views import establishments_api_blueprint
 from app import app
 from flask_cors import CORS
 
