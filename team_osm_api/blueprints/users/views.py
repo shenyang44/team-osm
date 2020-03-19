@@ -20,6 +20,13 @@ def index():
     return jsonify(user_list)
 
 
+@users_api_blueprint.route('/show', methods=['GET'])
+def show():
+    resp = request.get_json()
+
+    return jsonify(user_list)
+
+
 @users_api_blueprint.route('/sign-up', methods=['POST'])
 def create():
     resp = request.get_json()
@@ -29,8 +36,9 @@ def create():
     number = resp.get('number')
     address = resp.get('address')
     hashed_pa = generate_password_hash(password)
+    blood_type = resp.get('bloodType')
     user = User(name=name, password=hashed_pa,
-                email=email, number=number, address=address)
+                email=email, number=number, address=address, blood_group=blood_type)
 
     if user.save():
         user = User.get_or_none(User.email == email)
