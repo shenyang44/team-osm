@@ -21,7 +21,7 @@ def index():
 
 
 @users_api_blueprint.route('/show', methods=['GET'])
-# @jwt_required
+@jwt_required
 def show():
     # user_id = get_jwt_identity
     # current_user = User.get_or_none(User.id == user_id)
