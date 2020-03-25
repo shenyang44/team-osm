@@ -21,11 +21,12 @@ def index():
 
 
 @users_api_blueprint.route('/show', methods=['GET'])
-@jwt_required
+# @jwt_required
 def show():
-    user_id = get_jwt_identity
-    current_user = User.get_or_none(User.id == user_id)
-    return jsonify(name=current_user.name, email=current_user.email, address=current_user.address, number=current_user.number, blood=current_user.blood_group)
+    # user_id = get_jwt_identity
+    # current_user = User.get_or_none(User.id == user_id)
+    # return jsonify(name=current_user.name, email=current_user.email, address=current_user.address, number=current_user.number, blood=current_user.blood_group)
+    return jsonify(message='wanker')
 
 
 @users_api_blueprint.route('/sign-up', methods=['POST'])
