@@ -10,9 +10,8 @@ web_dir = os.path.join(os.path.dirname(
 
 app = Flask('NEXTAGRAM', root_path=web_dir)
 
-app.config['JWT_SECRET_KEY'] = 'ZmxhbWluZ28'
+app.config['JWT_SECRET_KEY'] = config.Config.SECRET_KEY
 jwt = JWTManager(app)
-
 # csrf = CSRFProtect(app)
 
 
