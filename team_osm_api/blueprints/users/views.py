@@ -54,30 +54,20 @@ def create():
         })
 
 
-# @users_api_blueprint.route('/login', methods=['POST'])
-# def login():
-#     if not request.is_json:
-#         return jsonify({"msg": "Missing JSON in request"}), 400
-#     email = request.json.get('email', None)
-#     password = request.json.get('password', None)
-#     if not email:
-#         return jsonify({"msg": "Missing username parameter"}), 400
-#     if not password:
-#         return jsonify({"msg": "Missing password parameter"}), 400
+@users_api_blueprint.route('/login', methods=['POST'])
+def login():
+    if not request.is_json:
+        return jsonify({"msg": "Missing JSON in request"}), 400
+    email = request.json.get('email', None)
+    password = request.json.get('password', None)
+    if not email:
+        return jsonify({"msg": "Missing username parameter"}), 400
+    if not password:
+        return jsonify({"msg": "Missing password parameter"}), 400
 
-#     user = User.get_or_none(User.email == email)
-#     # if username != 'test' or password != 'test':
-#     #     return jsonify({"msg": "Bad username or password"}), 401
+    user = User.get_or_none(User.email == email)
+    # if username != 'test' or password != 'test':
+    #     return jsonify({"msg": "Bad username or password"}), 401
 
-#     access_token = create_access_token(identity=user.id)
-#     return jsonify(access_token=access_token), 200
-
-
-# Protect a view with jwt_required, which requires a valid access token
-# in the request to access.
-# @app.route('/protected', methods=['GET'])
-# @jwt_required
-# def protected():
-#     # Access the identity of the current user with get_jwt_identity
-#     current_user = get_jwt_identity()
-#     return jsonify(logged_in_as=current_user), 200
+    access_token = create_access_token(identity=user.id)
+    return jsonify(access_token=access_token), 200
