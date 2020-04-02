@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, url_for, redirect, flash
 from models.establishment import Establishment
-from models.events import Events
+from models.events import Event
 from models.blood_invetory import Blood_Inventory
 
 
@@ -48,8 +48,8 @@ def create_events():
     description = request.form.get('description')
     establishment_id = request.form.get('establishment_id')
 
-    events = Events(location=location, date=date, time=time, event_name=event_name,
-                    description=description, establishment_id=establishment_id)
+    events = Event(location=location, date=date, time=time, event_name=event_name,
+                   description=description, establishment_id=establishment_id)
 
     try:
         events.save()

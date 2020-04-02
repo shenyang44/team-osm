@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request, render_template, redirect, json
-from models.events import Events
+from models.events import Event
 from werkzeug.security import generate_password_hash, check_password_hash
 from playhouse.shortcuts import model_to_dict
 from models.events import Event

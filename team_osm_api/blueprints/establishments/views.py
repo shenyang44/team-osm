@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, render_template, redirect, json
 from models.blood_invetory import Blood_Inventory
 from models.establishment import Establishment
-from models.events import Events
+from models.events import Event
 # from models.user import User
 # from werkzeug.security import generate_password_hash, check_password_hash
 from playhouse.shortcuts import model_to_dict
@@ -25,7 +25,7 @@ def index_establishment():
 
 @establishments_api_blueprint.route('/events', methods=['GET'])
 def index_events():
-    events = Events.select()
+    events = Event.select()
     event_list = []
     for event in events:
         event = model_to_dict(event)

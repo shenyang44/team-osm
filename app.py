@@ -4,15 +4,13 @@ from flask import Flask
 from models.base_model import db
 from flask_jwt_extended import JWTManager
 # from flask_wtf.csrf import CSRFProtect
-from flask_cors import CORS
 web_dir = os.path.join(os.path.dirname(
     os.path.abspath(__file__)), 'team_osm_web')
 
 app = Flask('NEXTAGRAM', root_path=web_dir)
-CORS(app)
 app.config['JWT_SECRET_KEY'] = config.Config.SECRET_KEY
 jwt = JWTManager(app)
-# csrf = CSRFProtect(app)
+# csrf = CSRFProtect(app)S
 
 
 if os.getenv('FLASK_ENV') == 'production':
