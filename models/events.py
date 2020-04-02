@@ -3,7 +3,7 @@ import peewee as pw
 from models.establishment import Establishment
 
 
-class Events(BaseModel):
+class Event(BaseModel):
     location = pw.CharField(unique=False)
     date = pw.CharField(unique=False)
     time = pw.CharField(unique=False)
