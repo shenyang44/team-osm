@@ -40,7 +40,7 @@ def create():
         flash('Employee successfully signed up', 'success')
         employee = Employee.get_or_none(Employee.username == username)
         login_user(employee)
-        return redirect(url_for('employees.show_mainpage'))
+        return redirect(url_for('events.index'))
 
     except:
         flash('Error creating Employee', 'danger')
