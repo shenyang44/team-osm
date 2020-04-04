@@ -1,7 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from models.employee import Employee
-from models.events import Event
-from models.establishment import Establishment
 from flask_login import LoginManager, current_user, login_user, login_required, logout_user
 from werkzeug.security import generate_password_hash
 
@@ -47,11 +45,3 @@ def create():
     except:
         flash('Error creating Employee', 'danger')
         return redirect(url_for('employees.new'))
-
-
-@employees_blueprint.route('/')
-@login_required
-def show_mainpage():
-    event = Event.select()
-    establishment = Establishment.select()
-    return render_template('employees/main_page.html', event=event, establishment=establishment)

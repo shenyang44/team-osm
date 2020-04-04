@@ -3,7 +3,7 @@
 
 <h1>Register Event</h1>
 
-<form action="{{ url_for('establishments.create_events') }}" method="post">
+<form action="{{ url_for('events.create') }}" method="post">
     <div class="form-group">
         <label>Location:</label>
         <input type='text' name='location' class="form-control" />
@@ -41,5 +41,5 @@
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 /
-<a href="{{ url_for('home') }}">Home</a>
+<a href="{{ url_for('events.index') }}">Home</a>
 {% endblock %}

@@ -33,34 +33,6 @@ def create_establishment():
         return redirect(url_for('establishments.new_establishment'))
 
 
-@establishments_blueprint.route('/events', methods=['GET'])
-def new_events():
-    establishments = Establishment.select()
-    return render_template('establishments/new_events.html', establishments=establishments)
-
-
-@establishments_blueprint.route('/events/', methods=['POST'])
-def create_events():
-    location = request.form.get('location')
-    date = request.form.get('date')
-    time = request.form.get('time')
-    event_name = request.form.get('event_name')
-    description = request.form.get('description')
-    establishment_id = request.form.get('establishment_id')
-
-    events = Event(location=location, date=date, time=time, event_name=event_name,
-                   description=description, establishment_id=establishment_id)
-
-    try:
-        events.save()
-        flash('Establishment registered successfully', 'success')
-        return redirect(url_for('home'))
-
-    except:
-        flash('Error creating Establishment', 'danger')
-        return redirect(url_for('establishments.new_events'))
-
-
 @establishments_blueprint.route('/blood_inventory', methods=['GET'])
 def new_blood_inventory():
     establishments = Establishment.select()

@@ -25,7 +25,10 @@
     <div>
         {{event.establishment.name}}
     </div>
-
+    <br>
+    ///
+    <a href="{{url_for('events.delete', event.id)}}">Delete.</a>
+    ///
 </div>
 <hr>
 {% endfor %}
