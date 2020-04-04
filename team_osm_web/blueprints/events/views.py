@@ -12,7 +12,7 @@ events_blueprint = Blueprint('events',
 def index():
     event = Event.select()
     establishment = Establishment.select()
-    return render_template('index.html', event=event, establishment=establishment)
+    return render_template('events/index.html', event=event, establishment=establishment)
 
 
 @events_blueprint.route('/new', methods=['GET'])
