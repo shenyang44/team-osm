@@ -39,7 +39,7 @@ def new_blood_inventory():
     return render_template('establishments/new_blood_inventory.html', establishments=establishments)
 
 
-@establishments_blueprint.route('/blood_inventory/', methods=['POST'])
+@establishments_blueprint.route('/blood_inventory/create', methods=['POST'])
 def create_blood_inventory():
     blood_type = request.form.get('blood_type')
     quantity = request.form.get('quantity')
