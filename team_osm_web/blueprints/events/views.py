@@ -8,7 +8,7 @@ events_blueprint = Blueprint('events',
                              template_folder='templates')
 
 
-@events_blueprint.route('/')
+@events_blueprint.route('/', methods=['GET'])
 def index():
     event = Event.select()
     establishment = Establishment.select()
