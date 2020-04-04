@@ -9,6 +9,7 @@ events_blueprint = Blueprint('events',
 
 
 @events_blueprint.route('/', methods=['GET'])
+@login_required
 def index():
     event = Event.select()
     establishment = Establishment.select()
