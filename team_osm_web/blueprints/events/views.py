@@ -50,7 +50,7 @@ def create():
         return redirect(url_for('events.new'))
 
 
-@events_blueprint.route('/delete/<id>', methods=[''])
+@events_blueprint.route('/delete/<id>')
 def delete(id):
     event = Event.get_or_none(Event.id == id)
     if event.delete_instance():
