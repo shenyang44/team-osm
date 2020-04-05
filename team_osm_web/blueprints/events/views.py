@@ -8,12 +8,16 @@ events_blueprint = Blueprint('events',
                              template_folder='templates')
 
 
+# @events_blueprint.route('/', methods=['GET'])
+# @login_required
+# def index():
+#     event = Event.select()
+#     establishment = Establishment.select()
+#     return render_template('events/index.html', event=event, establishment=establishment)
+
 @events_blueprint.route('/', methods=['GET'])
-@login_required
-def index():
-    event = Event.select()
-    establishment = Establishment.select()
-    return render_template('events/index.html', event=event, establishment=establishment)
+def show():
+    return('hello')
 
 
 @events_blueprint.route('/new', methods=['GET'])
