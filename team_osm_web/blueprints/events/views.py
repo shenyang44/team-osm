@@ -17,7 +17,9 @@ events_blueprint = Blueprint('events',
 
 @events_blueprint.route('/', methods=['GET'])
 def show():
-    return render_template('events/index.html')
+    events = Event.select()
+    establishments = Establishment.select()
+    return render_template('events/index.html', events=events)
 
 
 @events_blueprint.route('/new', methods=['GET'])
