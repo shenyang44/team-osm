@@ -8,16 +8,16 @@ events_blueprint = Blueprint('events',
                              template_folder='templates')
 
 
-# @events_blueprint.route('/', methods=['GET'])
-# @login_required
-# def index():
-#     event = Event.select()
-#     establishment = Establishment.select()
-#     return render_template('events/index.html', event=event, establishment=establishment)
-
 @events_blueprint.route('/', methods=['GET'])
-def show():
-    return('hello')
+@login_required
+def index():
+    event = Event.select()
+    establishment = Establishment.select()
+    return render_template('events/index.html', event=event, establishment=establishment)
+
+# @events_blueprint.route('/', methods=['GET'])
+# def show():
+#     return('hello')
 
 
 @events_blueprint.route('/new', methods=['GET'])
@@ -50,11 +50,11 @@ def create():
         return redirect(url_for('events.new'))
 
 
-@events_blueprint.route('/delete/{id}')
+@events_blueprint.route('/delete/<id>', methods=[''])
 def delete(id):
     event = Event.get_or_none(Event.id == id)
     if event.delete_instance():
         return redirect(url_for('events.index'))
     else:
         flash('Sorry but the deletion could not be executed', 'danger')
-        return request.referrer
+        return redirect(url_for(request.referrer))
