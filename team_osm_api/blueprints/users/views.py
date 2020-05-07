@@ -20,6 +20,16 @@ def index():
     return jsonify(user_list)
 
 
+@users_api_blueprint.route('/email-check')
+def email_check():
+    resp = request.get_json()
+    email = resp.get('email')
+    if User.get_or_none(User.email == email):
+        return jsonify(available=True)
+    else:
+        return jsonify(available=False)
+
+
 @users_api_blueprint.route('/show', methods=['GET'])
 @jwt_required
 def show():
